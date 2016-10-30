@@ -153,7 +153,7 @@
 
 
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center w3-black">
-    <p>Powered by <a href="default.html" target="_blank">Aung Myo Oo</a></p>
+    <p>Powered by <a href="default.html" target="_blank">Aung Myo Oo && Pyae Sone</a></p>
 
 </footer>
 
