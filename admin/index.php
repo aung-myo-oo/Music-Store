@@ -21,7 +21,7 @@
                     <h2 style="letter-spacing: 5px;" align="center">Login to Music Store Administration</h2>
                 </div>
 
-                <form class="w3-container"  style="padding: 100px;" method="post" action="login.php">
+                <form class="w3-container"  style="padding: 10%;" method="post" action="login.php">
 
                     <p>
                         <label>Enter Username</label>

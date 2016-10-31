@@ -35,7 +35,7 @@
       
     <div id="main">
      <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
-        <div class="w3-card-24" id="card-login-size">
+        <div class="w3-card-2" id="card-login-size">
             <div class="w3-container w3-black">
             <h2>New Category</h2>
             </div><br>

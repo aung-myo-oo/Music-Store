@@ -35,13 +35,13 @@
     <?php 
             include ("confs/config.php");
             $id = $_GET['id'];
-            $result = mysql_query("SELECT * FROM music WHERE id=$id");
+            $result = mysql_query("SELECT music.* FROM music WHERE id = $id");
             $row = mysql_fetch_assoc($result);
         ?>
       
     <div id="main">
      <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
-        <div class="w3-card-24" id="card-login-size">
+        <div class="w3-card-2" id="card-login-size">
             <div class="w3-container w3-black">
             <p style="font-size: 50px; letter-spacing: 4px;" align="center">New Music</p>
             </div><br>
@@ -66,23 +66,25 @@
                 <select name="category_id" class="w3-btn w3-hover-white">
                     <option>--Choice--</option>
                     <?php 
-                        include ("confs/config.php");
-                        $result = mysql_query("SELECT id, name FROM category");
-                        while($row = mysql_fetch_assoc($result)):
+                        $category = mysql_query("SELECT id, name FROM category");
+                        while($cat = mysql_fetch_assoc($category)):
                     ?>
-                    <option value="<?php echo $row['category_id']?>"><?php echo $row['category_id'] ?></option>
+                    <option value="<?php echo $cat['id']?>"
+                    <? if($cat['id'] == $row['category_id']) echo "selected" ?> >
+                    <?php echo $cat['name'] ?></option>
                     <? endwhile; ?>
                 </select>
                 <br><br>
                 <label for="artist">Artist &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
                 <select name="artist_id" class="w3-btn w3-hover-white">
                     <option>--Choice--</option>
-                    <?php 
-                        include ("confs/config.php");
-                        $result1 = mysql_query("SELECT id, name FROM artist");
-                        while($row1 = mysql_fetch_assoc($result1)):
+                    <?php
+                        $artist = mysql_query("SELECT id, name FROM artist");
+                        while($art = mysql_fetch_assoc($artist)):
                     ?>
-                    <option value="<?php echo $row1['id']?>"><?php echo $row1['name'] ?></option>
+                    <option value="<?php echo $art['id']?>"
+                    <? if($art['id'] == $row['artist_id']) echo "selected" ?> >
+                    <?php echo $art['name'] ?></option>
                     <? endwhile; ?>
                 </select>
                <br><br>
@@ -90,15 +92,23 @@
                 <select name="albums_id" class="w3-btn w3-hover-white">
                     <option>--Choice--</option>
                     <?php 
-                        include ("confs/config.php");
-                        $result2 = mysql_query("SELECT id, name FROM albums");
-                        while($row2 = mysql_fetch_assoc($result2)):
+                        $albums = mysql_query("SELECT id, name FROM albums");
+                        while($alb = mysql_fetch_assoc($albums)):
                     ?>
-                    <option value="<?php echo $row2['id']?>"><?php echo $row2['name'] ?></option>
+                    <option value="<?php echo $alb['id']?>"
+                    <? if($alb['id'] == $row['albums_id']) echo "selected" ?> >
+                    <?php echo $alb['name'] ?></option>
                     <? endwhile; ?>
                 </select>
                 <br><br>
-                <label for="cover">Cover</label>
+                <? if(!is_dir("cover/{$row['cover']}") and file_exists("cover/{$row['cover']}")):?>
+                 <img src="cover/<?php echo $row['cover'] ?>" alt="" height="150">
+                  <? else: ?>
+                  <img src="cover/no-cover.gif" alt="" height="150">
+                <? endif; ?>
+                <br><br>
+                
+
                     <input type="file" name="cover" id="cover">
                     <br><br>
                 

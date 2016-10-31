@@ -34,7 +34,7 @@
         <?php  
         include ("confs/config.php");
         $result = mysql_query("SELECT * FROM category"); ?>
-            <div class="w3-card-24" id="card-size">
+            <div class="w3-card-2" id="card-size">
                 <ul>
                     <?php while($row = mysql_fetch_assoc($result)):?>
                     <li title="<?php echo $row['remark'] ?>">

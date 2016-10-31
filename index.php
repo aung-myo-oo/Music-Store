@@ -25,13 +25,7 @@
         <a href="javascript:void(0);" onclick="myFunction()" class="w3-text-white w3-padding-16">☰</a>
     </li>
     <li><a href="#" class="w3-text-white w3-padding-16">Home</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Category</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Albums</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Artist</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Your cart</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Albums</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Artist</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Your cart</a></li>
+    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Music</a></li>
 </ul>
 
 <div id="demo" class="w3-hide w3-hide-large w3-hide-medium w3-top">
@@ -40,10 +34,7 @@
             <a href="javascript:void(0);" onclick="myFunction()" class="w3-text-white w3-padding-16">☰</a>
         </li>
         <li><a href="#" class="w3-text-white w3-padding-16">Home</a></li>
-        <li><a href="#" class="w3-text-white w3-padding-16">Category</a></li>
-        <li><a href="#" class="w3-text-white w3-padding-16">Albums</a></li>
-        <li><a href="#" class="w3-text-white w3-padding-16">Artist</a></li>
-        <li><a href="#" class="w3-text-white w3-padding-16">Your Cart</a></li>
+        <li><a href="#" class="w3-text-white w3-padding-16">Music</a></li>
 
     </ul>
 </div>
@@ -123,7 +114,7 @@
 
 
 <div class="w3-container w3-padding-64 w3-theme-l5 w3-light-grey">
-    <div class="w3-row">
+    <div class="w3-row" style="margin-left:10%;margin-right:10%">
         <div class="w3-col m5">
             <div class="w3-padding-16"><span class="w3-xlarge w3-border-black w3-bottombar">Contact Us</span></div>
             <h3>Address</h3>
@@ -132,7 +123,7 @@
             <p><i class="fa fa-envelope-o w3-text-black w3-xlarge"></i>&nbsp;&nbsp;bigblackhacker2015@gmail.com</p>
         </div>
         <div class="w3-col m7">
-            <form class="w3-container w3-card-4 w3-padding-16 w3-white">
+            <form class="w3-container w3-card-2 w3-padding-16 w3-white">
                 <div class="w3-group">
                     <label class="w3-label w3-text-black">Name</label>
                     <input class="w3-input" type="text">
@@ -143,7 +134,7 @@
                 </div>
                 <div class="w3-group">
                     <label class="w3-label w3-text-black">Subject</label>
-                    <input class="w3-input" type="text">
+                    <textarea class="w3-input"></textarea>
                 </div>
                 <button type="button" class="w3-btn w3-theme">Send</button>
             </form>
@@ -154,7 +145,6 @@
 
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center w3-black">
     <p>Powered by <a href="default.html" target="_blank">Aung Myo Oo && Pyae Sone</a></p>
-
 </footer>
 
 
