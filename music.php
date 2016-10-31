@@ -61,7 +61,9 @@
     <div class="w3-section w3-bottombar w3-padding-16">
       <span class="w3-margin-right">Filter:</span> <br>
       <a href="music.php" class="w3-btn w3-white w3-hover-black">ALL</a>
-      <a href="music-cat.php" class="w3-btn w3-white w3-hover-black">Category</a>
+      <? $cat = mysql_query("select * from category") ?>
+      <? $category = mysql_fetch_assoc($cat) ?>
+      <a href="music-cat.php?cat=<?php echo $category['id'] ?>" class="w3-btn w3-white w3-hover-black">Category</a>
       <a href="music-art.php" class="w3-btn w3-white w3-hover-black">Artsit</a>
       <a href="music-alb.php" class="w3-btn w3-white w3-hover-black">Albums</a>
     </div>

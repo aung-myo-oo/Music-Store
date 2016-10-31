@@ -1,3 +1,18 @@
+<?php 
+  session_start();
+  include("admin/confs/config.php");
+  
+  if(isset($_GET['cat'])) {
+  $cat_id = $_GET['cat'];
+  $music = mysql_query("select * from music where category_id = $cat_id");
+
+  } else {
+    $music = mysql_query("select * from music");
+  }
+
+ ?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +29,7 @@
 </head>
 <body>
 
-<?php include("admin/confs/config.php"); ?>
-<? $result = mysql_query("SELECT music.id as music_id, music.name as music_name, music.writer as music_writer, music.price as music_price, music.cover as music_cover, category.name as category_name, artist.name as artist_name, albums.name as albums_name  FROM music,category,albums,artist where music.albums_id = albums.id and music.artist_id = artist.id and music.category_id = category.id; ");  ?>
 
-<? $result1 = mysql_query("SELECT music.id as music_id, music.name as music_name, music.writer as music_writer, music.price as music_price, music.cover as music_cover, category.name as category_name, artist.name as artist_name, albums.name as albums_name  FROM music,category,albums,artist where music.albums_id = albums.id and music.artist_id = artist.id and music.category_id = category.id; ");  ?>
 
 <? $cat = mysql_query("select * from category") ?>
 <nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidenav"><br>
@@ -35,7 +47,7 @@
   <ul style="list-style-type:none;">
   <h3>Music List</h3>
   <? while($category = mysql_fetch_assoc($cat)):?>
-  <li><a href="#" class="w3-padding"><?php echo $category['name']?></a></li>
+  <li><a href="music-cat.php?cat=<?php echo $category['id'] ?>" class="w3-padding"><?php echo $category['name']?></a></li>
   <? endwhile; ?>
 
   </ul>
@@ -73,12 +85,12 @@
   
 
   <ul style="list-style-type:none;">
-    <?php while($row = mysql_fetch_assoc($result)):?>
+    <?php while($row = mysql_fetch_assoc($music)):?>
       <li style="padding:5%;">
         <div class="w3-row">
           <div class="w3-col m6">
-            <? if(!is_dir("admin/cover/{$row['music_cover']}") and file_exists("admin/cover/{$row['music_cover']}")): ?>
-              <img src="admin/cover/<?php echo $row['music_cover'] ?>" alt="" align="center" name="cover" style="width:90%; margin-top:5%;" class="w3-card-4">
+            <? if(!is_dir("admin/cover/{$row['cover']}") and file_exists("admin/cover/{$row['cover']}")): ?>
+              <img src="admin/cover/<?php echo $row['cover'] ?>" alt="" align="center" name="cover" style="width:90%; margin-top:5%;" class="w3-card-4">
             <? else: ?>
               <img src="admin/cover/no-cover.gif" alt="" align="center" >
             <? endif; ?>
@@ -88,27 +100,30 @@
               <table class="w3-table w3-striped">
                 <tr>
                   <th width="20%">Song</th>
-                  <td><?php echo $row['music_name']?></td>
+                  <td><?php echo $row['name']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Artist</th>
-                  <td><?php echo $row['artist_name']?></td>
+                  <td><?php echo $row['artist_id']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Album</th>
-                  <td><?php echo $row['albums_name']?></td>
+                  <td><?php echo $row['albums_id']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Writer</th>
-                  <td><?php echo $row['music_writer']?></td>
+                  <td><?php echo $row['writer']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Category</th>
-                  <td><?php echo $row['category_name']?></td>
+                  <? $cat2 = mysql_query("select * from category") ?>
+                  <? while($category2 = mysql_fetch_assoc($cat2)): ?>
+                  <? endwhile; ?>
+                  <td><?php if($row['category_id'] == $category2['id']) echo $category2['name']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Size</th>
-                  <td><?php echo $row['music_price']?>&nbsp;MB</td>
+                  <td><?php echo $row['price']?>&nbsp;MB</td>
                 </tr>
                 <tr>
                 <td  colspan="2"><button class="w3-btn-block w3-light-grey" width="100%">Download</button></td>
