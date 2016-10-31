@@ -16,7 +16,10 @@
 
 <?php include("admin/confs/config.php"); ?>
 <? $result = mysql_query("SELECT music.id as music_id, music.name as music_name, music.writer as music_writer, music.price as music_price, music.cover as music_cover, category.name as category_name, artist.name as artist_name, albums.name as albums_name  FROM music,category,albums,artist where music.albums_id = albums.id and music.artist_id = artist.id and music.category_id = category.id; ");  ?>
+
 <? $result1 = mysql_query("SELECT music.id as music_id, music.name as music_name, music.writer as music_writer, music.price as music_price, music.cover as music_cover, category.name as category_name, artist.name as artist_name, albums.name as albums_name  FROM music,category,albums,artist where music.albums_id = albums.id and music.artist_id = artist.id and music.category_id = category.id; ");  ?>
+
+<? $art = mysql_query("select * from artist") ?>
 <nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidenav"><br>
   <div class="w3-container">
     <a href="#" onclick="w3_close()" class="w3-hide-large w3-right w3-jumbo w3-padding" title="close menu">
@@ -31,8 +34,8 @@
   
   <ul style="list-style-type:none;">
   <h3>Music List</h3>
-  <? while($row1 = mysql_fetch_assoc($result1)):?>
-  <li><a href="#" class="w3-padding"><?php echo $row1['music_name']?></a></li>
+  <? while($artist = mysql_fetch_assoc($art)):?>
+  <li><a href="#" class="w3-padding"><?php echo $artist['name']?></a></li>
   <? endwhile; ?>
 
   </ul>

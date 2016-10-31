@@ -58,12 +58,13 @@
                               <li class="w3-padding-16">
 
                               <span class="w3-xlarge" style="letter-spacing: 3px;"><?php echo $row['music_name']?></span><br>
-                                <span>Song writer: <?php echo $row['music_writer']; ?></span><br>
-                                <span>Size: <?php echo $row['music_price'] ?> &nbsp; MB</span><br>
+                                
+                                <span>Artist: <?php echo $row['artist_name']?></span><br>
 
                                 <span>Albums: <?php echo $row['albums_name']?></span><br>
-                                <span>Artist: <?php echo $row['artist_name']?></span><br>
+                                <span>Song writer: <?php echo $row['music_writer']; ?></span><br>
                                 <span>Category: <?php echo $row['category_name']?></span><br>
+                                <span>Size: <?php echo $row['music_price'] ?> &nbsp; MB</span><br>
                               </li>
 
                             </ul>

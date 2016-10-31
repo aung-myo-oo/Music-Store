@@ -24,8 +24,8 @@
     <li class="w3-hide-medium w3-hide-large w3-black w3-opennav w3-right">
         <a href="javascript:void(0);" onclick="myFunction()" class="w3-text-white w3-padding-16">☰</a>
     </li>
-    <li><a href="#" class="w3-text-white w3-padding-16">Home</a></li>
-    <li class="w3-hide-small"><a href="#" class="w3-text-white w3-padding-16">Music</a></li>
+    <li><a href="index.php" class="w3-text-white w3-padding-16">Home</a></li>
+    <li class="w3-hide-small"><a href="music.php" class="w3-text-white w3-padding-16">Music</a></li>
 </ul>
 
 <div id="demo" class="w3-hide w3-hide-large w3-hide-medium w3-top">
@@ -33,8 +33,8 @@
         <li class="w3-hide-medium w3-hide-large w3-black w3-opennav w3-right">
             <a href="javascript:void(0);" onclick="myFunction()" class="w3-text-white w3-padding-16">☰</a>
         </li>
-        <li><a href="#" class="w3-text-white w3-padding-16">Home</a></li>
-        <li><a href="#" class="w3-text-white w3-padding-16">Music</a></li>
+        <li><a href="index.php" class="w3-text-white w3-padding-16">Home</a></li>
+        <li><a href="music.php" class="w3-text-white w3-padding-16">Music</a></li>
 
     </ul>
 </div>
