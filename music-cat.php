@@ -117,8 +117,8 @@
                 <tr>
                   <th width="20%">Category</th>
                   <? $cat2 = mysql_query("select * from category") ?>
-                  <? while($category2 = mysql_fetch_assoc($cat2)): ?>
-                  <? endwhile; ?>
+                  <? $category2 = mysql_fetch_assoc($cat2) ?>
+                  
                   <td><?php if($row['category_id'] == $category2['id']) echo $category2['name']?></td>
                 </tr>
                 <tr>
