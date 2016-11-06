@@ -123,18 +123,19 @@
             <p><i class="fa fa-envelope-o w3-text-black w3-xlarge"></i>&nbsp;&nbsp;bigblackhacker2015@gmail.com</p>
         </div>
         <div class="w3-col m7">
-            <form class="w3-container w3-card-2 w3-padding-16 w3-white">
+            <form action="" method="POST" enctype="multipart/form-data" class="w3-container w3-card-2 w3-padding-16 w3-white">
+              <input type="hidden" name="action" value="submit">
                 <div class="w3-group">
                     <label class="w3-label w3-text-black">Name</label>
-                    <input class="w3-input" type="text">
+                    <input name="name" class="w3-input" type="text">
                 </div>
                 <div class="w3-group">
                     <label class="w3-label w3-text-black">Email</label>
-                    <input class="w3-input" type="text">
+                    <input name="email" class="w3-input" type="text">
                 </div>
                 <div class="w3-group">
                     <label class="w3-label w3-text-black">Subject</label>
-                    <textarea class="w3-input"></textarea>
+                    <textarea name="message" class="w3-input"></textarea>
                 </div>
                 <button type="button" class="w3-btn w3-theme">Send</button>
             </form>
@@ -182,4 +183,3 @@
 
 <!-- Mirrored from www.w3schools.com/w3css/tryit.asp?filename=tryw3css_navbar_hide by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 27 Jun 2016 11:33:35 GMT -->
 </html>
-

@@ -1,3 +1,32 @@
+<?php
+  session_start();
+  include("admin/confs/config.php");
+
+  if(isset($_GET['art'])) {
+  $art_id = $_GET['art'];
+  $music = mysql_query("SELECT song.song_id AS song_id, song.music_id AS smusic_id,
+    song.artist_id AS sartist_id, song.albums_id AS salbums_id, song.category_id AS scategory_id,
+    albums.albums_id AS albums_id, albums.name AS albums_name, artist.artist_id AS artist_id,
+    artist.name AS artist_name, category.category_id AS category_id, category.name AS category_name,
+    category.remark AS category_remark, music.music_id AS music_id, music.name AS music_name, music.writer AS music_writer,
+    music.size AS music_size, music.cover AS music_cover, music.link AS music_link FROM song,music,category,artist,albums
+    WHERE song.music_id = music.music_id AND song.artist_id = artist.artist_id AND song.albums_id = albums.albums_id AND song.category_id = category.category_id
+ AND artist.artist_id = $art_id");
+
+  } else {
+    $music = mysql_query("SELECT song.song_id AS song_id, song.music_id AS smusic_id,
+      song.artist_id AS sartist_id, song.albums_id AS salbums_id, song.category_id AS scategory_id,
+      albums.albums_id AS albums_id, albums.name AS albums_name, artist.artist_id AS artist_id,
+      artist.name AS artist_name, category.category_id AS category_id, category.name AS category_name,
+      category.remark AS category_remark, music.music_id AS music_id, music.name AS music_name, music.writer AS music_writer,
+      music.size AS music_size, music.cover AS music_cover, music.link AS music_link FROM song,music,category,artist,albums
+      WHERE song.music_id = music.music_id AND song.artist_id = artist.artist_id AND song.albums_id = albums.albums_id AND song.category_id = category.category_id");
+  }
+
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +43,6 @@
 </head>
 <body>
 
-<?php include("admin/confs/config.php"); ?>
-<? $result = mysql_query("SELECT music.id as music_id, music.name as music_name, music.writer as music_writer, music.price as music_price, music.cover as music_cover, category.name as category_name, artist.name as artist_name, albums.name as albums_name  FROM music,category,albums,artist where music.albums_id = albums.id and music.artist_id = artist.id and music.category_id = category.id; ");  ?>
-
-<? $result1 = mysql_query("SELECT music.id as music_id, music.name as music_name, music.writer as music_writer, music.price as music_price, music.cover as music_cover, category.name as category_name, artist.name as artist_name, albums.name as albums_name  FROM music,category,albums,artist where music.albums_id = albums.id and music.artist_id = artist.id and music.category_id = category.id; ");  ?>
 
 <? $art = mysql_query("select * from artist") ?>
 <nav class="w3-sidenav w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidenav"><br>
@@ -28,19 +53,19 @@
     <img src="photo/mancity.jpg" style="width:45%;" class="w3-round"><br><br>
     <h4 class="w3-padding-0"><b>SKULL</b></h4>
   </div>
-  <a href="index.php" class="w3-padding">HOME</a> 
-  <a href="#" class="w3-padding">ABOUT</a> 
+  <a href="index.php" class="w3-padding">HOME</a>
+  <a href="#" class="w3-padding">ABOUT</a>
   <a href="#" class="w3-padding">SHARE</a>
-  
+
   <ul style="list-style-type:none;">
   <h3>Music List</h3>
   <? while($artist = mysql_fetch_assoc($art)):?>
-  <li><a href="#" class="w3-padding"><?php echo $artist['name']?></a></li>
+  <li><a href="music-art.php?art=<?php echo $artist['artist_id'] ?>" class="w3-padding"><?php echo $artist['name']?></a></li>
   <? endwhile; ?>
 
   </ul>
 
-   
+
   <div class="w3-section w3-padding-top w3-large">
     <a href="#" class="w3-hover-white w3-hover-text-indigo w3-show-inline-block"><i class="fa fa-facebook-official"></i></a>
     <a href="#" class="w3-hover-white w3-hover-text-red w3-show-inline-block"><i class="fa fa-pinterest-p"></i></a>
@@ -70,10 +95,10 @@
     </div>
   </header>
 
-  
+
 
   <ul style="list-style-type:none;">
-    <?php while($row = mysql_fetch_assoc($result)):?>
+    <?php while($row = mysql_fetch_assoc($music)):?>
       <li style="padding:5%;">
         <div class="w3-row">
           <div class="w3-col m6">
@@ -85,14 +110,14 @@
           </div>
           <div class="w3-col m6 w3-center">
             <div class="w3-section w3-border w3-round-xlarge" style="padding:10px">
-              <table class="w3-table w3-striped">
+							<table class="w3-table w3-striped">
                 <tr>
                   <th width="20%">Song</th>
                   <td><?php echo $row['music_name']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Artist</th>
-                  <td><?php echo $row['artist_name']?></td>
+                  <td><?php if($row['sartist_id'] == $row['artist_id']) echo $row['artist_name']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Album</th>
@@ -104,11 +129,11 @@
                 </tr>
                 <tr>
                   <th width="20%">Category</th>
-                  <td><?php echo $row['category_name']?></td>
+									<td><?php echo $row['category_name']?></td>
                 </tr>
                 <tr>
                   <th width="20%">Size</th>
-                  <td><?php echo $row['music_price']?>&nbsp;MB</td>
+                  <td><?php echo $row['music_size']?>&nbsp;MB</td>
                 </tr>
                 <tr>
                 <td  colspan="2"><button class="w3-btn-block w3-light-grey" width="100%">Download</button></td>
@@ -123,7 +148,7 @@
 
   </ul>
 
-  
+
 </div>
 
 
@@ -133,7 +158,7 @@ function w3_open() {
     document.getElementById("mySidenav").style.display = "block";
     document.getElementById("myOverlay").style.display = "block";
 }
- 
+
 function w3_close() {
     document.getElementById("mySidenav").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";

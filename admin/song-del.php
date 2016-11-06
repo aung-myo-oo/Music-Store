@@ -6,11 +6,9 @@
  * and open the template in the editor.
  */
 include ("confs/config.php");
-
-$name = $_POST['name'];
-$sql = "INSERT INTO artist (name) VALUES ('$name')";
-
+$id = $_GET['id'];
+$sql = "DELETE FROM song WHERE song_id=$id";
 mysql_query($sql);
-header("location: artist-list.php");
+header("location: song-list.php");
 
 ?>

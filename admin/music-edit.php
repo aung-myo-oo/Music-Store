@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>Bootstrap 101 Template</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
@@ -30,15 +30,17 @@
         <a href="albums-list.php">Albums List</a>
         <a href="music-new.php">New Music</a>
         <a href="music-list.php">Music List</a>
+        <a href="song-new.php">New Song</a>
+        <a href="song-list.php">Song List</a>
         <a href="logout.php">logout</a>
     </nav>
-    <?php 
+    <?php
             include ("confs/config.php");
             $id = $_GET['id'];
-            $result = mysql_query("SELECT music.* FROM music WHERE id = $id");
+            $result = mysql_query("SELECT music.* FROM music WHERE music_id = $id");
             $row = mysql_fetch_assoc($result);
         ?>
-      
+
     <div id="main">
      <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
         <div class="w3-card-2" id="card-login-size">
@@ -46,7 +48,7 @@
             <p style="font-size: 50px; letter-spacing: 4px;" align="center">New Music</p>
             </div><br>
             <form class="w3-container" action="music-update.php" method="post" enctype="multipart/form-data">
-            		<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+            		<input type="hidden" name="id" value="<?php echo $row['music_id'] ?>">
 
                 <p>
                     <label>Song title</label>
@@ -58,74 +60,40 @@
                     <input type="text" class="w3-input" name="writer" required="" value="<?php echo $row['writer'];?>">
                 </p>
                 <p>
-                    <label>Song Price</label>
-                    <input type="text" class="w3-input" name="price" required="" value="<?php echo $row['price'];?>">
+                    <label>Song link</label>
+                    <input type="text" class="w3-input" name="link" required="" value="<?php echo $row['link'];?>">
                 </p>
-                
-                <label for="categories">Category &nbsp;</label>
-                <select name="category_id" class="w3-btn w3-hover-white">
-                    <option>--Choice--</option>
-                    <?php 
-                        $category = mysql_query("SELECT id, name FROM category");
-                        while($cat = mysql_fetch_assoc($category)):
-                    ?>
-                    <option value="<?php echo $cat['id']?>"
-                    <? if($cat['id'] == $row['category_id']) echo "selected" ?> >
-                    <?php echo $cat['name'] ?></option>
-                    <? endwhile; ?>
-                </select>
-                <br><br>
-                <label for="artist">Artist &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                <select name="artist_id" class="w3-btn w3-hover-white">
-                    <option>--Choice--</option>
-                    <?php
-                        $artist = mysql_query("SELECT id, name FROM artist");
-                        while($art = mysql_fetch_assoc($artist)):
-                    ?>
-                    <option value="<?php echo $art['id']?>"
-                    <? if($art['id'] == $row['artist_id']) echo "selected" ?> >
-                    <?php echo $art['name'] ?></option>
-                    <? endwhile; ?>
-                </select>
-               <br><br>
-                <label for="albums">Albums &nbsp;&nbsp;&nbsp;</label>
-                <select name="albums_id" class="w3-btn w3-hover-white">
-                    <option>--Choice--</option>
-                    <?php 
-                        $albums = mysql_query("SELECT id, name FROM albums");
-                        while($alb = mysql_fetch_assoc($albums)):
-                    ?>
-                    <option value="<?php echo $alb['id']?>"
-                    <? if($alb['id'] == $row['albums_id']) echo "selected" ?> >
-                    <?php echo $alb['name'] ?></option>
-                    <? endwhile; ?>
-                </select>
-                <br><br>
+                <p>
+                    <label>Song Size</label>
+                    <input type="text" class="w3-input" name="size" required="" value="<?php echo $row['size'];?>">
+                </p>
+
+
                 <? if(!is_dir("cover/{$row['cover']}") and file_exists("cover/{$row['cover']}")):?>
                  <img src="cover/<?php echo $row['cover'] ?>" alt="" height="150">
                   <? else: ?>
                   <img src="cover/no-cover.gif" alt="" height="150">
                 <? endif; ?>
                 <br><br>
-                
+
 
                     <input type="file" name="cover" id="cover">
                     <br><br>
-                
-                
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
+
+
 
                 <div class="extra content">
                     <input type="submit" class="w3-btn w3-hover-white" value="Update" name="update">
                 </div>
             </form>
         </div>
-    </div>      
+    </div>
     <script>
         function w3_open() {
           document.getElementById("main").style.marginLeft = "25%";
@@ -139,11 +107,11 @@
           document.getElementById("openNav").style.display = "inline-block";
         }
     </script>
-    
-      
-      
-      
-      
+
+
+
+
+
     <script src="../Bootstrap file/js/bootstrap.min.js"></script>
   </body>
 </html>

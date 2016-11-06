@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <title>Bootstrap 101 Template</title>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/semantic.min.js"></script>
@@ -30,9 +30,11 @@
         <a href="albums-list.php">Albums List</a>
         <a href="music-new.php">New Music</a>
         <a href="music-list.php">Music List</a>
+        <a href="song-new.php">New Song</a>
+        <a href="song-list.php">Song List</a>
         <a href="logout.php">logout</a>
     </nav>
-      
+
     <div id="main">
      <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
         <div class="w3-card-2" id="card-login-size">
@@ -50,7 +52,7 @@
                 </div>
             </form>
         </div>
-    </div>      
+    </div>
     <script>
         function w3_open() {
           document.getElementById("main").style.marginLeft = "25%";
@@ -64,10 +66,10 @@
           document.getElementById("openNav").style.display = "inline-block";
         }
     </script>
-      
-      
-      
-      
+
+
+
+
     <script src="../Bootstrap file/js/bootstrap.min.js"></script>
   </body>
 </html>
