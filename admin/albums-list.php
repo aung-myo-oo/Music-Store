@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Categories list</title>
+        <title>Albums list</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/semantic.min.js"></script>
@@ -24,6 +24,8 @@
         <a href="albums-list.php">Albums List</a>
         <a href="music-new.php">New Music</a>
         <a href="music-list.php">Music List</a>
+        <a href="song-new.php">New Song</a>
+        <a href="song-list.php">Song List</a>
         <a href="logout.php">logout</a>
         </nav>
         <div id="main">
@@ -31,18 +33,18 @@
                 <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
                 <center><p style="font-size: 50px;" class="w3-text-shadow">Albums List</p></center>
             </header>
-        <?php  
+        <?php
         include ("confs/config.php");
         $result = mysql_query("SELECT * FROM albums"); ?>
             <div class="w3-card-2" id="card-size">
                 <ul>
                     <?php while($row = mysql_fetch_assoc($result)):?>
-                    <li title="<?php echo $row['id'] ?>">
+                    <li>
                         <div class="ui inverted divider"></div>
                         <div class="row">
                             <div class="col-md-9"><center><?php echo $row['name'];?></center></div>
-                            <div class="col-md-3"><a href="albums-del.php?id=<?php echo $row['id']?>"  class="w3-btn w3-hover-red" id="right-btn">Delete</a>
-                            <a href="albums-edit.php?id=<?php echo $row['id']?>" class="w3-btn w3-hover-blue">Edit</a></div>
+                            <div class="col-md-3"><a href="albums-del.php?albums_id=<?php echo $row['albums_id']?>"  class="w3-btn w3-hover-red" id="right-btn">Delete</a>
+                            <a href="albums-edit.php?albums_id=<?php echo $row['albums_id']; ?>" class="w3-btn w3-hover-blue">Edit</a></div>
                         </div>
                         <div class="ui inverted divider"></div>
                     </li>
@@ -66,4 +68,3 @@
         </script>
     </body>
 </html>
-

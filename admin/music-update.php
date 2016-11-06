@@ -4,27 +4,19 @@ include ("confs/config.php");
 $id = $_POST['id'];
 $name = $_POST['name'];
 $writer = $_POST['writer'];
-$price = $_POST['price'];
-$albums_id = $_POST['albums_id'];
-$artist_id=$_POST['artist_id'];
-$category_id = $_POST['category_id'];
+$size = $_POST['size'];
+$link = $_POST['link'];
 $cover = $_FILES['cover']['name'];
 $tmp = $_FILES['cover']['tmp_name'];
 
 if($cover){
     move_uploaded_file($tmp, "cover/$cover");
-    $sql = "UPDATE music SET name='$name',
-     writer='$writer', price='$price', albums_id='$albums_id',
-      artist_id='$artist_id', category_id='$category_id',
-       cover='$cover' WHERE id = $id";
+    $sql = "UPDATE music SET name='$name', writer='$writer', size='$size', cover='$cover', link='$link' WHERE music_id = $id";
 }else{
-	$sql = "UPDATE music SET name='$name', writer='$writer',
-	 price='$price', albums_id='$albums_id', artist_id='$artist_id',
-	  category_id='$category_id' WHERE id = $id";
+	$sql = "UPDATE music SET name='$name', writer='$writer', size='$size', link='$link' WHERE music_id = $id";
 }
 
 
 mysql_query($sql);
 header("location: music-list.php");
 ?>
-

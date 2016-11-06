@@ -24,6 +24,8 @@
         <a href="albums-list.php">Albums List</a>
         <a href="music-new.php">New Music</a>
         <a href="music-list.php">Music List</a>
+        <a href="song-new.php">New Song</a>
+        <a href="song-list.php">Song List</a>
         <a href="logout.php">logout</a>
         </nav>
         <div id="main">
@@ -31,18 +33,18 @@
                 <span class="w3-opennav w3-xlarge" onclick="w3_open()" id="openNav">&#9776;</span>
                 <center><p style="font-size: 50px;" class="w3-text-shadow">Artist List</p></center>
             </header>
-        <?php  
+        <?php
         include ("confs/config.php");
         $result = mysql_query("SELECT * FROM artist"); ?>
             <div class="w3-card-2" id="card-size">
                 <ul>
                     <?php while($row = mysql_fetch_assoc($result)):?>
-                    <li title="<?php echo $row['id'] ?>">
+                    <li title="<?php echo $row['artist_id'] ?>">
                         <div class="ui inverted divider"></div>
                         <div class="row">
                             <div class="col-md-9"><center><?php echo $row['name'];?></center></div>
-                            <div class="col-md-3"><a href="artist-del.php?id=<?php echo $row['id']?>"  class="w3-btn w3-hover-red" id="right-btn">Delete</a>
-                            <a href="artist-edit.php?id=<?php echo $row['id']?>" class="w3-btn w3-hover-blue">Edit</a></div>
+                            <div class="col-md-3"><a href="artist-del.php?id=<?php echo $row['artist_id']?>"  class="w3-btn w3-hover-red" id="right-btn">Delete</a>
+                            <a href="artist-edit.php?id=<?php echo $row['artist_id']?>" class="w3-btn w3-hover-blue">Edit</a></div>
                         </div>
                         <div class="ui inverted divider"></div>
                     </li>
@@ -66,4 +68,3 @@
         </script>
     </body>
 </html>
-

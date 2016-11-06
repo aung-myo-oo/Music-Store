@@ -30,12 +30,14 @@
         <a href="albums-list.php">Albums List</a>
         <a href="music-new.php">New Music</a>
         <a href="music-list.php">Music List</a>
+        <a href="song-new.php">New Song</a>
+        <a href="song-list.php">Song List</a>
         <a href="logout.php">logout</a>
         </nav>
-        <?php 
+        <?php
             include ("confs/config.php");
-            $id = $_GET['id'];
-            $result = mysql_query("SELECT * FROM albums WHERE id=$id");
+            $id = $_GET['albums_id'];
+            $result = mysql_query("SELECT * FROM albums WHERE albums_id=$id");
             $row = mysql_fetch_assoc($result);
         ?>
         <div id="main">
@@ -45,20 +47,20 @@
                         <h2>Edit Albums</h2>
                     </div><br>
                     <form action="albums-update.php" method="post" class="w3-container">
-                        
-                        <input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+
+                        <input type="hidden" name="albums_id" value="<?php echo $row['albums_id'] ?>">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="w3-input" placeholder="Enter username" name="name" value="<?php echo $row['name'];?>" required="">
                         </div>
-                        
+
                         <div class="extra content">
                             <input type="submit" class="w3-btn w3-hover-white" value="Update" name="submit">
                         </div>
                     </form>
                 </div>
         </div>
-        
+
         <script>
         function w3_open() {
           document.getElementById("main").style.marginLeft = "25%";
@@ -72,8 +74,8 @@
           document.getElementById("openNav").style.display = "inline-block";
         }
     </script>
-        
-        
-        
+
+
+
     </body>
 </html>
